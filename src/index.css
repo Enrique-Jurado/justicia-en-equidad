@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@media print {
+  /* Hide non-printable elements */
+  header,
+  footer,
+  nav,
+  .no-print,
+  .print-hide {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Force printable container full width */
+  .print-only-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Always show all stage details in print */
+  .print-force-expand {
+    display: block !important;
+  }
+}
