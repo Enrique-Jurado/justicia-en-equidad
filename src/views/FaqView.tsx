@@ -131,11 +131,40 @@ export const FaqView: React.FC = () => {
           )}
         </div>
 
-        {/* Dynamic Category Filter Pills */}
+        {/* Mobile Compact Category Selector (< 768px) */}
+        <div className="md:hidden pt-3 border-t border-slate-100 space-y-1.5">
+          <label
+            htmlFor="faq-category-select-mobile"
+            className="block text-xs font-bold text-slate-700 uppercase tracking-wider"
+          >
+            Categoría
+          </label>
+          <div className="relative">
+            <select
+              id="faq-category-select-mobile"
+              name="faq-category-select-mobile"
+              value={selectedCat}
+              onChange={(e) => setSelectedCat(e.target.value)}
+              className="w-full appearance-none bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 pr-10 text-xs font-bold text-slate-800 outline-none focus:border-blue-900 focus:bg-white focus-visible:ring-2 focus-visible:ring-blue-900 transition-all cursor-pointer shadow-xs"
+              aria-label="Filtrar por categoría"
+            >
+              {categories.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.label} ({c.count})
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500">
+              <ChevronDown className="w-4 h-4 text-blue-900" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+
+        {/* Dynamic Category Filter Pills (Tablet & Desktop >= 768px) */}
         <div
           role="toolbar"
           aria-label="Filtrar por categoría"
-          className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-100 text-xs"
+          className="hidden md:flex flex-wrap items-center gap-2 pt-3 border-t border-slate-100 text-xs"
         >
           {categories.map((c) => {
             const isSelected = selectedCat === c.id;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { UserProfile, ActiveTab } from '../types';
 import {
@@ -39,6 +39,28 @@ export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [quickSearchOpen, setQuickSearchOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setQuickSearchOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const handleQuickSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,10 +170,14 @@ export const Header: React.FC = () => {
             >
               <Search className="w-4 h-4" />
             </button>
+            {/* El botón superior de hamburguesa se oculta en móvil para evitar duplicidad con el botón 'Secciones' del micrositio */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#004899] text-white hover:bg-[#003875] cursor-pointer"
-              aria-label="Menú principal"
+              className="hidden p-2 rounded-lg bg-[#004899] text-white hover:bg-[#003875] cursor-pointer transition-colors"
+              aria-label="Menú principal institucional"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-drawer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -207,6 +233,17 @@ export const Header: React.FC = () => {
               <Scale className="w-6 h-6 text-[#004899] shrink-0" />
               <span>Justicia en Equidad</span>
             </h1>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:hidden px-3 py-1.5 rounded-lg bg-[#004899] text-white text-xs font-bold flex items-center gap-1.5 hover:bg-[#003875] transition-colors cursor-pointer shadow-xs"
+              aria-label="Ver las 10 secciones del micrositio"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-drawer"
+            >
+              <Menu className="w-3.5 h-3.5" />
+              <span>Secciones</span>
+            </button>
           </div>
 
           {/* Elementos del Perfil de Navegación */}
@@ -273,31 +310,125 @@ export const Header: React.FC = () => {
         </div>
       </nav>
 
-      {/* 6. Menú Lateral Móvil */}
+      {/* 6. Menú Lateral Móvil (Drawer Accesible con las 10 Secciones) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 p-4 space-y-2 max-h-[80vh] overflow-y-auto">
-          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider px-2 py-1">
-            Secciones del Micrositio
-          </div>
-          {navLinks.map((link) => {
-            const isActive = activeTab === link.tab;
-            const Icon = link.icon;
-            return (
+        <div
+          id="mobile-navigation-drawer"
+          className="fixed inset-0 z-50 lg:hidden flex justify-end"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menú de navegación del micrositio"
+        >
+          {/* Backdrop con cierre al hacer clic */}
+          <div
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Panel Lateral Desplegable */}
+          <div className="relative w-full max-w-xs sm:max-w-sm bg-white shadow-2xl flex flex-col h-full z-10 animate-in slide-in-from-right duration-200">
+            {/* Cabecera del Drawer */}
+            <div className="p-4 bg-[#004899] text-white flex items-center justify-between shadow-xs shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                  <Scale className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-black tracking-tight leading-tight">Justicia en Equidad</div>
+                  <div className="text-[11px] text-blue-100 font-medium">10 Secciones del Micrositio</div>
+                </div>
+              </div>
               <button
-                key={link.tab}
-                onClick={() => {
-                  setActiveTab(link.tab);
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full p-2.5 rounded-lg text-left text-xs font-bold flex items-center gap-2.5 transition-colors cursor-pointer ${
-                  isActive ? 'bg-[#004899] text-white' : 'text-slate-700 hover:bg-slate-100'
-                }`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white cursor-pointer transition-colors"
+                aria-label="Cerrar menú de navegación"
               >
-                <Icon className="w-4 h-4 shrink-0" />
-                <span>{link.label}</span>
+                <X className="w-5 h-5" />
               </button>
-            );
-          })}
+            </div>
+
+            {/* Contenido con Scroll de las 10 Secciones */}
+            <div className="flex-1 overflow-y-auto p-3 space-y-1">
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2 py-1">
+                Secciones Disponibles
+              </div>
+              <div className="space-y-1">
+                {navLinks.map((link, idx) => {
+                  const isActive = activeTab === link.tab;
+                  const Icon = link.icon;
+                  return (
+                    <button
+                      key={link.tab}
+                      onClick={() => {
+                        setActiveTab(link.tab);
+                        setMobileMenuOpen(false);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className={`w-full px-3 py-2.5 rounded-xl text-left text-xs font-bold flex items-center justify-between transition-colors cursor-pointer ${
+                        isActive
+                          ? 'bg-[#004899] text-white shadow-xs font-black'
+                          : 'text-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className={`w-5 text-[11px] font-bold shrink-0 ${isActive ? 'text-blue-200' : 'text-slate-400'}`}>
+                          {idx + 1}.
+                        </span>
+                        <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-[#004899]'}`} />
+                        <span className="truncate">{link.label}</span>
+                      </div>
+                      {isActive && (
+                        <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full font-bold shrink-0">
+                          Activo
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Acceso Rápido a Perfiles en Móvil */}
+              <div className="pt-3 mt-3 border-t border-slate-200">
+                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2 py-1 mb-1">
+                  Perfil de Navegación
+                </div>
+                <div className="grid grid-cols-1 gap-1 px-1">
+                  {profileOptions.map((p) => {
+                    const isSelected = activeProfile === p.id;
+                    const Icon = p.icon;
+                    return (
+                      <button
+                        key={p.id}
+                        onClick={() => {
+                          setActiveProfile(p.id);
+                          if (p.id === 'ciudadania') setActiveTab('ruta-ciudadana');
+                          else if (p.id === 'entidad') setActiveTab('plje');
+                          else if (p.id === 'conciliador') setActiveTab('conciliadores');
+                          else if (p.id === 'aliado') setActiveTab('sistema');
+                          setMobileMenuOpen(false);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className={`p-2 rounded-lg text-left text-[11px] flex items-center gap-2 transition-all cursor-pointer border ${
+                          isSelected
+                            ? 'bg-blue-50 text-[#004899] border-[#004899] font-bold'
+                            : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5 shrink-0 text-[#004899]" />
+                        <span className="truncate">{p.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Pie del Menú */}
+            <div className="p-3 bg-slate-50 border-t border-slate-200 text-center text-[10px] text-slate-500 shrink-0">
+              República de Colombia • MinJusticia
+            </div>
+          </div>
         </div>
       )}
 
