@@ -180,6 +180,9 @@ export const CitizenConflictWizard: React.FC = () => {
                   <li><strong>Fiscalía General de la Nación:</strong> Denuncias e investigación de posibles delitos.</li>
                 </ul>
               </div>
+              <div className="mt-4 p-3.5 rounded-lg bg-rose-100/80 border border-rose-200 text-xs sm:text-sm text-rose-950 leading-relaxed">
+                <strong>Importante:</strong> Esta orientación es únicamente pedagógica y no reemplaza la valoración ni las medidas que puedan adoptar las autoridades competentes.
+              </div>
             </div>
           ) : isNotConciliable ? (
             /* RESULTADO AMARILLO: Requiere otra ruta institucional */
@@ -205,6 +208,9 @@ export const CitizenConflictWizard: React.FC = () => {
                   <li><strong>Casa de Justicia o Personería Municipal:</strong> para recibir orientación sobre la ruta institucional más adecuada y los servicios disponibles en su municipio.</li>
                 </ul>
               </div>
+              <div className="mt-4 p-3.5 rounded-lg bg-amber-100/80 border border-amber-200 text-xs sm:text-sm text-amber-950 leading-relaxed">
+                <strong>Importante:</strong> Esta orientación es únicamente pedagógica y no reemplaza la valoración ni las medidas que puedan adoptar las autoridades competentes.
+              </div>
             </div>
           ) : isDirectlyConciliable ? (
             /* RESULTADO VERDE: Potencialmente conciliable */
@@ -217,9 +223,17 @@ export const CitizenConflictWizard: React.FC = () => {
                 Con base en las respuestas suministradas, el conflicto descrito podría ser susceptible de ser atendido mediante Conciliación en Equidad.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                <div className="bg-white p-3.5 rounded-lg border border-emerald-200 text-xs sm:text-sm">
+                <div className="bg-white p-3.5 rounded-lg border border-emerald-200 text-xs sm:text-sm space-y-2">
                   <span className="font-bold text-emerald-800 block mb-1">✓ Totalmente Gratuito</span>
-                  El conciliador no cobra nada. Solo expensas directas de papelería/envío si se requieren.
+                  <p className="text-slate-700 leading-relaxed">
+                    El conciliador en equidad no cobra honorarios ni recibe pagos por el servicio.
+                  </p>
+                  <p className="text-slate-700 leading-relaxed">
+                    En algunos casos pueden existir gastos operativos necesarios para el trámite, como envíos postales o copias documentales.
+                  </p>
+                  <p className="text-slate-700 leading-relaxed">
+                    Estos valores no se pagan al conciliador.
+                  </p>
                 </div>
                 <div className="bg-white p-3.5 rounded-lg border border-emerald-200 text-xs sm:text-sm">
                   <span className="font-bold text-emerald-800 block mb-1">✓ Pleno Valor Legal</span>

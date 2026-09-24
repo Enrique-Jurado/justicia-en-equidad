@@ -61,8 +61,8 @@ export const RutaCiudadanaView: React.FC = () => {
           </p>
           <div className="pt-2 flex flex-wrap gap-2 text-xs text-blue-200">
             <span className="bg-white/10 px-2.5 py-1 rounded-lg">Trámite Gratuito</span>
-            <span className="bg-white/10 px-2.5 py-1 rounded-lg">Sin Necesidad de Abogado</span>
-            <span className="bg-white/10 px-2.5 py-1 rounded-lg">Fuerza de Sentencia Judicial</span>
+            <span className="bg-white/10 px-2.5 py-1 rounded-lg">No requiere abogado para solicitar la conciliación</span>
+            <span className="bg-white/10 px-2.5 py-1 rounded-lg">Tiene efectos jurídicos (Mérito ejecutivo y cosa juzgada)</span>
           </div>
         </div>
 

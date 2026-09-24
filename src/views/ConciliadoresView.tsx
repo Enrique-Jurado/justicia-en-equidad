@@ -14,7 +14,8 @@ import {
   Compass,
   Heart,
   ChevronRight,
-  BookOpen
+  BookOpen,
+  Calendar
 } from 'lucide-react';
 
 export const ConciliadoresView: React.FC = () => {
@@ -211,7 +212,7 @@ export const ConciliadoresView: React.FC = () => {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-xs sm:text-sm">
           {/* Housing */}
           <div className="p-6 rounded-2xl bg-blue-50/60 border border-blue-200 space-y-3">
             <div className="flex items-center gap-2.5 text-blue-900 font-black text-base">
@@ -235,10 +236,23 @@ export const ConciliadoresView: React.FC = () => {
             <p className="text-slate-700 leading-relaxed">
               Acceso prioritario a beneficios de matrícula o descuentos en convenios con instituciones de educación superior y formación técnica, extensivo a los miembros de su <strong>núcleo familiar</strong>.
             </p>
-            <div className="p-3 bg-white rounded-lg border border-emerald-200 text-xs text-slate-600">
-              <strong>Día Nacional de la Conciliación en Equidad:</strong> Se conmemora el último sábado de noviembre para exaltar la labor comunitaria en todo el país.
-            </div>
           </div>
+
+          {/* Día Nacional */}
+          <div className="p-6 rounded-2xl bg-purple-50/60 border border-purple-200 space-y-3">
+            <div className="flex items-center gap-2.5 text-purple-900 font-black text-base">
+              <Calendar className="w-5 h-5 text-purple-700" />
+              <span>Día Nacional de la Conciliación en Equidad</span>
+            </div>
+            <p className="text-slate-700 leading-relaxed">
+              Se conmemora el último sábado de noviembre para exaltar la labor comunitaria de los conciliadores y conciliadoras en equidad en todo el país.
+            </p>
+          </div>
+        </div>
+
+        {/* Nota Institucional Transversal */}
+        <div className="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <strong className="text-slate-900 font-bold">Nota institucional:</strong> La inscripción activa en el PLJE no garantiza la asignación automática de beneficios. La prelación opera dentro de la oferta institucional vigente y de acuerdo con los requisitos definidos por cada programa.
         </div>
       </section>
     </div>
