@@ -183,19 +183,35 @@ export const ConciliadoresView: React.FC = () => {
         )}
 
         {selectedState === 'inactivo' && (
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-slate-900">Ruta de Reactivación para Conciliadores</h3>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Si fue nombrado en años anteriores y estuvo inactivo, puede reincorporarse al servicio comunitario en sencillos pasos.
-            </p>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <div className="w-full lg:w-[58%] space-y-6">
+              <h3 className="text-xl font-bold text-slate-900">Ruta de Reactivación para Conciliadores</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Si fue nombrado en años anteriores y estuvo inactivo, puede reincorporarse al servicio comunitario en sencillos pasos.
+              </p>
 
-            <ol className="space-y-3 text-xs sm:text-sm text-slate-700 list-decimal pl-5">
-              <li>Acérquese a la Secretaría de Gobierno o Coordinación del PLJE de su municipio.</li>
-              <li>Presente copia de su acta o resolución judicial de nombramiento.</li>
-              <li>Actualice sus datos de residencia (mínimo 2 años continuos en el territorio) y contacto.</li>
-              <li>Participe en los talleres de actualización normativa del Decreto 42 de 2026.</li>
-              <li>Obtenga su constancia de inscripción activa por 2 años.</li>
-            </ol>
+              <ol className="space-y-3 text-xs sm:text-sm text-slate-700 list-decimal pl-5">
+                <li>Acérquese a la Secretaría de Gobierno o Coordinación del PLJE de su municipio.</li>
+                <li>Presente copia de su acta o resolución judicial de nombramiento.</li>
+                <li>Actualice sus datos de residencia (mínimo 2 años continuos en el territorio) y contacto.</li>
+                <li>Participe en los talleres de actualización normativa del Decreto 42 de 2026.</li>
+                <li>Obtenga su constancia de inscripción activa por 2 años.</li>
+              </ol>
+            </div>
+
+            <div className="w-full lg:w-[42%] shrink-0 self-start">
+              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xs aspect-[16/9] flex items-center justify-center">
+                <img
+                  src="/images/contenido/reactivacion-conciliadores.jpeg"
+                  alt="Ruta de reactivación para conciliadores y conciliadoras en equidad"
+                  className="w-full h-full object-contain object-center"
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-[11px] sm:text-xs text-slate-500 text-center mt-2.5">
+                Ruta de reactivación: reincorporación al servicio comunitario de justicia en equidad.
+              </p>
+            </div>
           </div>
         )}
       </div>
