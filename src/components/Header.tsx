@@ -170,10 +170,12 @@ export const Header: React.FC = () => {
             >
               <Search className="w-4 h-4" />
             </button>
+            {/* El botón superior de hamburguesa se oculta en móvil para evitar duplicidad con el botón 'Secciones' del micrositio */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#004899] text-white hover:bg-[#003875] cursor-pointer transition-colors"
-              aria-label="Menú principal de navegación"
+              className="hidden p-2 rounded-lg bg-[#004899] text-white hover:bg-[#003875] cursor-pointer transition-colors"
+              aria-label="Menú principal institucional"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation-drawer"
             >
@@ -232,9 +234,12 @@ export const Header: React.FC = () => {
               <span>Justicia en Equidad</span>
             </h1>
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(true)}
               className="lg:hidden px-3 py-1.5 rounded-lg bg-[#004899] text-white text-xs font-bold flex items-center gap-1.5 hover:bg-[#003875] transition-colors cursor-pointer shadow-xs"
               aria-label="Ver las 10 secciones del micrositio"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-drawer"
             >
               <Menu className="w-3.5 h-3.5" />
               <span>Secciones</span>
