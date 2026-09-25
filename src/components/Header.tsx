@@ -104,10 +104,7 @@ export const Header: React.FC = () => {
       {/* 1. Barra Oficial GOV.CO - Color Institucional #004899 */}
       <div className="bg-[#004899] text-white text-[11px] py-1.5 px-4 sm:px-8 flex items-center justify-between border-b border-blue-900 shadow-xs">
         <div className="flex items-center gap-3">
-          <GovCoLogo height={18} className="text-white" />
-          <span className="text-blue-100/80 text-[10px] hidden sm:inline border-l border-blue-400/40 pl-3">
-            República de Colombia • Ministerio de Justicia y del Derecho
-          </span>
+          <GovCoLogo height={22} />
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 text-[10px]">
