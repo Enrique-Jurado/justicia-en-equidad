@@ -338,39 +338,55 @@ export const RutaCiudadanaView: React.FC = () => {
               </p>
             </div>
 
-            <div className="space-y-3 text-xs sm:text-sm">
-              {[
-                {
-                  m: 'Momento 1: Explicación Inicial',
-                  desc: 'El conciliador se presenta, aclara que el servicio es gratuito, que no es un juicio, y fija las reglas de respeto y confidencialidad.',
-                },
-                {
-                  m: 'Momento 2: Relato de las Partes',
-                  desc: 'Cada persona expone su versión sin interrupciones. El conciliador toma notas para identificar las verdaderas causas del desacuerdo.',
-                },
-                {
-                  m: 'Momento 3: Delimitación del Conflicto',
-                  desc: 'El conciliador resume los puntos donde hay acuerdo y donde existe desacuerdo, aclarando qué asuntos son prioritarios resolver.',
-                },
-                {
-                  m: 'Momento 4: Construcción de Fórmulas',
-                  desc: 'Las partes proponen alternativas. El conciliador formula preguntas y sugiere opciones realistas basadas en la equidad comunitaria.',
-                },
-                {
-                  m: 'Momento 5: Lectura y Firma del Acta',
-                  desc: 'Si hay acuerdo, se lee el texto en voz alta para verificar montos, fechas y lugares exactos de cumplimiento antes de estampar las firmas.',
-                },
-              ].map((item, idx) => (
-                <div key={idx} className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-blue-900 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    {idx + 1}
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              <div className="w-full lg:w-[58%] space-y-3 text-xs sm:text-sm">
+                {[
+                  {
+                    m: 'Momento 1: Explicación Inicial',
+                    desc: 'El conciliador se presenta, aclara que el servicio es gratuito, que no es un juicio, y fija las reglas de respeto y confidencialidad.',
+                  },
+                  {
+                    m: 'Momento 2: Relato de las Partes',
+                    desc: 'Cada persona expone su versión sin interrupciones. El conciliador toma notas para identificar las verdaderas causas del desacuerdo.',
+                  },
+                  {
+                    m: 'Momento 3: Delimitación del Conflicto',
+                    desc: 'El conciliador resume los puntos donde hay acuerdo y donde existe desacuerdo, aclarando qué asuntos son prioritarios resolver.',
+                  },
+                  {
+                    m: 'Momento 4: Construcción de Fórmulas',
+                    desc: 'Las partes proponen alternativas. El conciliador formula preguntas y sugiere opciones realistas basadas en la equidad comunitaria.',
+                  },
+                  {
+                    m: 'Momento 5: Lectura y Firma del Acta',
+                    desc: 'Si hay acuerdo, se lee el texto en voz alta para verificar montos, fechas y lugares exactos de cumplimiento antes de estampar las firmas.',
+                  },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3">
+                    <div className="w-7 h-7 rounded-lg bg-blue-900 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm">{item.m}</h4>
+                      <p className="text-slate-600 text-xs mt-0.5 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm">{item.m}</h4>
-                    <p className="text-slate-600 text-xs mt-0.5 leading-relaxed">{item.desc}</p>
-                  </div>
+                ))}
+              </div>
+
+              <div className="w-full lg:w-[42%] shrink-0 self-start">
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xs aspect-[16/9] flex items-center justify-center">
+                  <img
+                    src="images/contenido/audiencia-conciliacion.jpeg"
+                    alt="Audiencia de conciliación en equidad comunitaria"
+                    className="w-full h-full object-contain object-center"
+                    loading="lazy"
+                  />
                 </div>
-              ))}
+                <p className="text-[11px] sm:text-xs text-slate-500 text-center mt-2.5">
+                  Audiencia de conciliación: diálogo constructivo orientado por el conciliador en equidad.
+                </p>
+              </div>
             </div>
 
             <div className="pt-4 flex justify-between items-center">
