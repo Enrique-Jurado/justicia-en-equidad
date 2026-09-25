@@ -136,7 +136,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     aliases: ['conciliacion en equidad', 'conciliación comunitaria', 'justicia en equidad'],
     tags: ['conceptos', 'mecanismos', 'justicia comunitaria', 'convivencia'],
     relatedTerms: ['Conciliador o conciliadora en equidad', 'Mecanismos Alternativos de Solución de Conflictos (MASC)', 'Programa Local de Justicia en Equidad (PLJE)', 'Punto de Atención de la Conciliación en Equidad (PACE)'],
-    avoidTerms: 'Evita decir "juicio rápido" o "justicia de garaje". La Conciliación en Equidad es un mecanismo formal reconocido constitucionalmente.',
+    avoidTerms: 'Evita presentar la Conciliación en Equidad como un juicio o como una forma abreviada de justicia ordinaria. Explica que es un mecanismo comunitario y participativo mediante el cual las personas construyen acuerdos con el apoyo de un conciliador o conciliadora en equidad.',
     normativeRef: 'Constitución Política art. 116; Ley 2220 de 2022, art. 5',
     audience: ['ciudadania', 'conciliadores', 'entidades-territoriales', 'academia', 'todos'],
   },
