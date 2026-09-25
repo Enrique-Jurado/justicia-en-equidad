@@ -35,14 +35,18 @@ export interface FaqItem {
 }
 
 export interface GlossaryTerm {
+  id: string;
   term: string;
   category: string;
   shortDef: string;
   fullDef: string;
   example?: string;
+  aliases: string[];
+  tags: string[];
   relatedTerms: string[];
   avoidTerms?: string;
   normativeRef?: string;
+  audience: string[];
   marker?: string;
 }
 
