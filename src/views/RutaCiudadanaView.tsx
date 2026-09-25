@@ -377,7 +377,7 @@ export const RutaCiudadanaView: React.FC = () => {
               <div className="w-full lg:w-[42%] shrink-0 self-start">
                 <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xs aspect-[16/9] flex items-center justify-center">
                   <img
-                    src="/images/contenido/audiencia-conciliacion.jpeg"
+                    src="images/contenido/audiencia-conciliacion.jpeg"
                     alt="Audiencia de conciliación en equidad comunitaria"
                     className="w-full h-full object-contain object-center"
                     loading="lazy"
