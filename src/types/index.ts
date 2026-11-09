@@ -58,9 +58,12 @@ export interface ResourceItem {
   theme: string;
   type: 'Guía' | 'Norma' | 'Lineamiento' | 'Formato' | 'Modelo' | 'Infografía' | 'Video' | 'Herramienta';
   format: 'PDF' | 'Word' | 'Web' | 'Interactivo';
-  version: string;
-  date: string;
-  status: 'Vigente' | 'En preparación' | 'Histórico' | 'Pendiente de validación';
+  version?: string;
+  date?: string;
+  status: 'disponible' | 'en-preparacion';
+  fileUrl?: string;
+  externalUrl?: string;
+  aliases?: string[];
   officialSource?: string;
   marker?: string;
   downloadable: boolean;
